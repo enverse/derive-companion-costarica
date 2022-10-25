@@ -1,17 +1,17 @@
-import type { NextPage } from "next";
-import Head from "next/head";
+import type { NextPage } from 'next';
+import useTranslation from 'next-translate/useTranslation';
 
 const Home: NextPage = () => {
+  const { t } = useTranslation();
+
+  const body = t('home:body');
+  const footer = t('home:footer');
+
   return (
     <>
-      <Head>
-        <title>Alliance Francaise</title>
-        <meta name="description" content="Balade au Costa Rica" />
-      </Head>
+      <main>{body}</main>
 
-      <main>You are on mobile</main>
-
-      <footer>copyright</footer>
+      <footer>{footer}</footer>
       <style jsx>
         {`
           main {

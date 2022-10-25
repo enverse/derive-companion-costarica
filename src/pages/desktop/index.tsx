@@ -1,17 +1,14 @@
-import type { NextPage } from "next";
-import Head from "next/head";
+import type { NextPage } from 'next';
+import useTranslation from 'next-translate/useTranslation';
 
 const Home: NextPage = () => {
+  const { t } = useTranslation();
+
+  const body = t('desktop:body');
   return (
     <>
-      <Head>
-        <title>Create Next App</title>
-        <meta name="description" content="Balade au Costa Rica" />
-      </Head>
+      <main>{body}</main>
 
-      <main>You are on desktop</main>
-
-      <footer>copyright</footer>
       <style jsx>
         {`
           main {

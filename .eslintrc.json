@@ -3,6 +3,20 @@
     "next/core-web-vitals",
     "prettier",
     "airbnb",
-    "plugin:react/recommende"
-  ]
+    "plugin:react/recommended"
+  ],
+  "rules": {
+    "import/prefer-default-export": "off",
+    "react/function-component-definition": "off",
+    "react/jsx-filename-extension": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/no-unknown-property": [
+      2,
+      {
+        "ignore": [
+          "jsx"
+        ]
+      }
+    ]
+  }
 }

@@ -7,17 +7,21 @@ specifiers:
   eslint: 8.23.1
   eslint-config-airbnb: ^19.0.4
   eslint-config-next: 12.3.1
+  eslint-config-prettier: ^8.5.0
   eslint-plugin-import: ^2.26.0
   eslint-plugin-jsx-a11y: ^6.6.1
   eslint-plugin-react: ^7.31.8
   eslint-plugin-react-hooks: ^4.6.0
   next: 12.3.1
+  next-translate: ^1.6.0
+  prettier: ^2.7.1
   react: 18.2.0
   react-dom: 18.2.0
   typescript: 4.8.3
 
 dependencies:
   next: 12.3.1_biqbaboplfbrettd7655fr4n2y
+  next-translate: 1.6.0_next@12.3.1+react@18.2.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
 
@@ -28,10 +32,12 @@ devDependencies:
   eslint: 8.23.1
   eslint-config-airbnb: 19.0.4_4zstfqq5uopk5xuvotejlnl36y
   eslint-config-next: 12.3.1_irgkl5vooow2ydyo6aokmferha
+  eslint-config-prettier: 8.5.0_eslint@8.23.1
   eslint-plugin-import: 2.26.0_eslint@8.23.1
   eslint-plugin-jsx-a11y: 6.6.1_eslint@8.23.1
   eslint-plugin-react: 7.31.8_eslint@8.23.1
   eslint-plugin-react-hooks: 4.6.0_eslint@8.23.1
+  prettier: 2.7.1
   typescript: 4.8.3
 
 packages:
@@ -699,6 +705,15 @@ packages:
     transitivePeerDependencies:
       - eslint-import-resolver-webpack
       - supports-color
+    dev: true
+
+  /eslint-config-prettier/8.5.0_eslint@8.23.1:
+    resolution: {integrity: sha512-obmWKLUNCnhtQRKc+tmnYuQl0pFU1ibYJQ5BGhTVB08bHe9wC8qUeG7c08dj9XX+AuPj1YSGSQIHl1pnDHZR0Q==}
+    hasBin: true
+    peerDependencies:
+      eslint: '>=7.0.0'
+    dependencies:
+      eslint: 8.23.1
     dev: true
 
   /eslint-import-resolver-node/0.3.6:
@@ -1465,6 +1480,16 @@ packages:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
 
+  /next-translate/1.6.0_next@12.3.1+react@18.2.0:
+    resolution: {integrity: sha512-rmRBYOwPHvokN+5uH3O/SZqfRUVORLkgt/097mSaq3+CWcEtXEjkVrfBZpYwZ8W3og4QVd+uphYX//qegnIbRg==}
+    peerDependencies:
+      next: '>= 10.0.0'
+      react: '>= 16.8.0'
+    dependencies:
+      next: 12.3.1_biqbaboplfbrettd7655fr4n2y
+      react: 18.2.0
+    dev: false
+
   /next/12.3.1_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-l7bvmSeIwX5lp07WtIiP9u2ytZMv7jIeB8iacR28PuUEFG5j0HGAPnMqyG5kbZNBG2H7tRsrQ4HCjuMOPnANZw==}
     engines: {node: '>=12.22.0'}
@@ -1652,6 +1677,12 @@ packages:
   /prelude-ls/1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
+    dev: true
+
+  /prettier/2.7.1:
+    resolution: {integrity: sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
     dev: true
 
   /prop-types/15.8.1:
