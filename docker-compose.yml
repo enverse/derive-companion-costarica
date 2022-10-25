@@ -1,0 +1,17 @@
+version: "3.7"
+services:
+  derive-website:
+    build:
+      context: .
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    environment:
+      VIRTUAL_HOST: sanjose.derive.fm, chepe.derive.fm
+      VIRTUAL_PORT: 4008
+      LETSENCRYPT_HOST: sanjose.derive.fm, chepe.derive.fm
+      PORT: 4008
+    ports:
+      - "4008:4008"
+    container_name: derive-website
+    network_mode: bridge
