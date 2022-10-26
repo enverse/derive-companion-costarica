@@ -76,7 +76,7 @@ deploy_prod:
     - make push-production
     # update server with new image
     - ssh admin@155.133.129.16 "
-        docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD && 
+        docker login registry.gitlab.com -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD && 
         docker pull registry.gitlab.com/heretictech/derive-companion-costarica:production &&
         docker run --name derive_companion_costarica_tmp  registry.gitlab.com/heretictech/derive-companion-costarica:production
         docker stop derive_companion_costarica
