@@ -1,3 +1,7 @@
+stages:
+  - test
+  - deploy
+
 image: docker:latest
 
 services:
@@ -54,6 +58,7 @@ test_feature_branches:
         - ./coverage/junit.xml
 
 deploy_staging:
+  stage: deploy
   only:
       - develop
   script:
@@ -61,8 +66,9 @@ deploy_staging:
     - docker push $CI_REGISTRY_IMAGE_PATH/derive-companion-costarica-staging:latest
 
 deploy_prod:
+  stage: deploy
   only:
       - main
   script:
     - make build-production
-    - docker push $CI_REGISTRY_IMAGE_PATH:derive-companion-costarica-production:latest
+    - docker push $CI_REGISTRY_IMAGE_PATH/derive-companion-costarica-production:latest
