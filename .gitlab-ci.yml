@@ -1,5 +1,8 @@
 image: docker:latest
 
+services:
+  - docker:dind
+
 before_script:
   ##
   ## Install ssh-agent if not already installed, it is required by Docker.
