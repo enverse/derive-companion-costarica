@@ -9,7 +9,7 @@ RUN yarn global add pnpm
 
 COPY ./package.json ./pnpm-lock.yaml ./
 
-RUN pnpm install --prod --frozen-lockfile
+RUN pnpm install --frozen-lockfile
 
 # 2. Build image, build all soruce code
 FROM node:16-alpine AS builder

@@ -36,6 +36,7 @@ before_script:
   ##
   - ssh-keyscan 155.133.129.16 >> ~/.ssh/known_hosts
   - chmod 644 ~/.ssh/known_hosts
+  - docker login registry.gitlab.com -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
 
 
 test_feature_branches:
@@ -57,7 +58,6 @@ deploy_staging:
       - develop
   script:
     - make build-staging
-    - docker login registry.gitlab.com -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
     - docker push derive-companion-costarica-staging
 
 deploy_prod:
@@ -65,5 +65,4 @@ deploy_prod:
       - main
   script:
     - make build-production
-    - docker login registry.gitlab.com -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
     - docker push derive-companion-costarica-production
