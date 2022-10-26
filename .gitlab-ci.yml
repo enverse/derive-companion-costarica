@@ -1,3 +1,7 @@
+variables: 
+  - IMAGE_DEPLOY_STAGING: $CI_REGISTRY_IMAGE_PATH/derive-companion-costarica-staging:latest
+  - IMAGE_DEPLOY_PROD: $CI_REGISTRY_IMAGE_PATH/derive-companion-costarica-production:latest
+
 stages:
   - test
   - deploy
@@ -63,7 +67,7 @@ deploy_staging:
       - develop
   script:
     - make build-staging
-    - docker push "$CI_REGISTRY_IMAGE_PATH/derive-companion-costarica-staging:latest"
+    - docker push "$IMAGE_DEPLOY_STAGING"
 
 deploy_prod:
   stage: deploy
@@ -71,4 +75,4 @@ deploy_prod:
       - main
   script:
     - make build-production
-    - docker push "$CI_REGISTRY_IMAGE_PATH/derive-companion-costarica-production:latest"
+    - docker push "$IMAGE_DEPLOY_PROD"

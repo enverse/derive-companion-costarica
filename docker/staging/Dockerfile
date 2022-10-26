@@ -13,6 +13,10 @@ RUN pnpm install --frozen-lockfile
 
 # 2. Build image, build all soruce code
 FROM node:16-alpine AS builder
+
+ENV NEXT_TELEMETRY_DISABLED=1
+
+
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
@@ -20,6 +24,10 @@ RUN yarn build
 
 # 3. Production image, copy all the files and run next
 FROM node:16-alpine AS runner
+
+ENV NEXT_TELEMETRY_DISABLED=1
+
+
 WORKDIR /app
 
 ENV NODE_ENV=production
