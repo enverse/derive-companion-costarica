@@ -51,15 +51,15 @@ test_feature_branches:
 deploy_staging:
   only:
       - develop
-    script:
-      - make build-staging
-      - docker login registry.gitlab.com -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
-      - docker push derive-companion-costarica-staging
+  script:
+    - make build-staging
+    - docker login registry.gitlab.com -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
+    - docker push derive-companion-costarica-staging
 
 deploy_staging:
   only:
       - main
-    script:
-      - make build-production
-      - docker login registry.gitlab.com -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
-      - docker push derive-companion-costarica-production
+  script:
+    - make build-production
+    - docker login registry.gitlab.com -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
+    - docker push derive-companion-costarica-production
