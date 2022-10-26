@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  derive-companion-costarica-production:
+    build:
+      context: ../../
+      dockerfile: docker/production/Dockerfile
+    image: registry.gitlab.com/heretictech/derive-companion-costarica-production:latest
+    # volumes:
+    #   - ./:/app
+    #   - /app/node_modules
+    environment:
+      VIRTUAL_HOST: sanjose.derive.fm, chepe.derive.fm
+      VIRTUAL_PORT: 4009
+      LETSENCRYPT_HOST: sanjose.derive.fm, chepe.derive.fm
+      PORT: 4009
+    ports:
+      - "4009:4009"
+    container_name: derive-companion-costarica-production
+    network_mode: bridge

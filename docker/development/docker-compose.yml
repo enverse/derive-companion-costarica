@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  derive-companion-costarica-development:
+    build:
+      context: ../../
+      dockerfile: ./docker/developement/Dockerfile
+    image: registry.gitlab.com/heretictech/derive-companion-costarica-development:latest
+    # volumes:
+    #   - ./:/app
+    #   - /app/node_modules
+    environment:
+      VIRTUAL_HOST: sanjose-localhost.derive.fm
+      VIRTUAL_PORT: 4009
+      LETSENCRYPT_HOST: sanjose-localhost.derive.fm
+      PORT: 4009
+    ports:
+      - "4009:4009"
+    container_name: derive-companion-costarica-development
+    network_mode: bridge
