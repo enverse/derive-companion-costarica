@@ -78,8 +78,8 @@ deploy_prod:
     - ssh admin@155.133.129.16 "
         docker login registry.gitlab.com -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD && 
         docker pull registry.gitlab.com/heretictech/derive-companion-costarica:production &&
-        docker run --name derive_companion_costarica_tmp  registry.gitlab.com/heretictech/derive-companion-costarica:production
-        docker stop derive_companion_costarica
-        docker rename derive_companion_costarica_tmp derive_companion_costarica
+        docker run --name derive_companion_costarica_tmp  registry.gitlab.com/heretictech/derive-companion-costarica:production &&
+        docker stop derive_companion_costarica &&
+        docker rename derive_companion_costarica_tmp derive_companion_costarica &&
         docker container rm derive_companion_costarica_tmp
       "
