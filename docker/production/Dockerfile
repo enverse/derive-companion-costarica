@@ -1,15 +1,14 @@
 # 1. Install dependencies only when needed
 FROM node:16-alpine AS deps
 
-RUN apt-get update && apt-get install -y lsof
-
-RUN npm --silent install --global --depth 0 pnpm
-
+RUN apk add --no-cache libc6-compat
 
 WORKDIR /app
 
-COPY ./package.json ./
-COPY ./pnpm-lock.yaml ./
+RUN yarn global add pnpm 
+
+COPY ./package.json ./pnpm-lock.yaml ./
+
 RUN pnpm install --prod --frozen-lockfile
 
 # 2. Build image, build all soruce code
@@ -17,7 +16,7 @@ FROM node:16-alpine AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-RUN pnpm build
+RUN yarn build
 
 # 3. Production image, copy all the files and run next
 FROM node:16-alpine AS runner
@@ -28,7 +27,7 @@ ENV NODE_ENV=production
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
 
-COPY --from=builder /app/public ./public
+COPY --from=builder /app/src/public ./public
 
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
