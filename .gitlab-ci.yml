@@ -56,7 +56,7 @@ deploy_staging:
     - docker login registry.gitlab.com -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
     - docker push derive-companion-costarica-staging
 
-deploy_staging:
+deploy_prod:
   only:
       - main
   script:
