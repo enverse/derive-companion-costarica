@@ -26,6 +26,10 @@ stop-staging: ## Stop the staging docker container.
 build-production: ## Build the production docker image.
 	docker compose -f ./docker/production/docker-compose.yml build
 
+.PHONY: push-production
+push-production: ## push the image to gitlab registry.
+	docker compose -f ./docker/production/docker-compose.yml push
+
 .PHONY: start-production
 start-production: ## Start the production docker container.
 	docker compose -f ./docker/production/docker-compose.yml up -d

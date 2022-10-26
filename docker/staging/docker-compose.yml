@@ -4,7 +4,7 @@ services:
     build:
       context: ../../
       dockerfile: docker/developement/Dockerfile
-    image: registry.gitlab.com/heretictech/derive-companion-costa:latest
+    image: registry.gitlab.com/heretictech/derive-companion-costa:staging
     # volumes:
     #   - ./:/app
     #   - /app/node_modules
