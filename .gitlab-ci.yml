@@ -6,7 +6,7 @@ before_script:
   ## (change apt-get to yum if you use an RPM-based image)
   ##
   - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
-  - apt-get update && apt-get install make
+  - apk update && apk add make
 
   ##
   ## Run ssh-agent (inside the build environment)
