@@ -81,5 +81,4 @@ deploy_prod:
         docker run --detach --name derive_companion_costarica_tmp registry.gitlab.com/heretictech/derive-companion-costarica:production &&
         docker stop derive_companion_costarica && docker rm derive_companion_costarica || echo "no running derive_companion_costarica" &&
         docker rename derive_companion_costarica_tmp derive_companion_costarica &&
-        docker container rm derive_companion_costarica_tmp
       "
