@@ -70,7 +70,7 @@ deploy_staging:
         docker run --detach --name derive_companion_costarica_tmp_stg registry.gitlab.com/heretictech/derive-companion-costarica:staging &&
         docker stop derive-companion-costarica-staging && docker rm derive-companion-costarica-staging || echo 'no running derive-companion-costarica-staging' &&
         docker rename derive_companion_costarica_tmp_stg derive-companion-costarica-staging
-      ""
+      "
 
 deploy_prod:
   stage: deploy
