@@ -68,9 +68,9 @@ deploy_staging:
         docker login registry.gitlab.com -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD && 
         docker pull registry.gitlab.com/heretictech/derive-companion-costarica:staging &&
         docker run --detach --name derive_companion_costarica_tmp_stg registry.gitlab.com/heretictech/derive-companion-costarica:staging &&
-        docker stop derive_companion_costarica_stg && docker rm derive_companion_costarica_stg || echo "no running derive_companion_costarica_stg" &&
+        docker stop derive_companion_costarica_stg && docker rm derive_companion_costarica_stg || echo 'no running derive_companion_costarica_stg' &&
         docker rename derive_companion_costarica_tmp_stg derive_companion_costarica_stg
-      "
+      ""
 
 deploy_prod:
   stage: deploy
