@@ -50,7 +50,7 @@ USER nextjs
 
 EXPOSE 4009
 
-ENV PORT 4009
+ENV PORT 4010
 
 
 CMD ["node", "server.js"]
