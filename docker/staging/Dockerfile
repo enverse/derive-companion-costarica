@@ -27,9 +27,9 @@ FROM node:16-alpine AS runner
 
 ENV NEXT_TELEMETRY_DISABLED=1
 
-ENV VIRTUAL_HOST="sanjose.derive.fm, chepe.derive.fm"
-ENV VIRTUAL_PORT=4009
-ENV LETSENCRYPT_HOST="sanjose.derive.fm, chepe.derive.fm"
+ENV VIRTUAL_HOST="sanjose-staging.derive.fm, chepe-staging.derive.fm"
+ENV VIRTUAL_PORT=4010
+ENV LETSENCRYPT_HOST="sanjose-staging.derive.fm, chepe-staging.derive.fm"
 
 
 WORKDIR /app
