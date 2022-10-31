@@ -3,7 +3,7 @@ services:
   derive-companion-costarica-staging:
     build:
       context: ../../
-      dockerfile: docker/developement/Dockerfile
+      dockerfile: docker/staging/Dockerfile
     image: registry.gitlab.com/heretictech/derive-companion-costarica:staging
     # volumes:
     #   - ./:/app
