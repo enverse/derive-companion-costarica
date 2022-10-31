@@ -21,6 +21,10 @@ start-staging: ## Start the staging docker container.
 .PHONY: stop-staging
 stop-staging: ## Stop the staging docker container.
 	docker compose -f ./docker/staging/docker-compose.yml down
+
+.PHONY: push-staging
+push-production: ## push the image to gitlab registry.
+	docker compose -f ./docker/staging/docker-compose.yml push
   
 .PHONY: build-production
 build-production: ## Build the production docker image.

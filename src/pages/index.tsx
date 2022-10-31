@@ -7,6 +7,7 @@ const Home: NextPage = () => {
 
   const body = t('home:body');
   const footer = t('home:footer');
+  const footerLinkText = t('home:footer-link-text');
 
   const langLinks = ['en', 'fr', 'es'];
 
@@ -15,12 +16,11 @@ const Home: NextPage = () => {
       <main>
         <nav>
           <div>Logos</div>
-          <div>
+          <div className="home__language-links-block">
             {langLinks.map((langLink, idx) => (
               // TODO fix this css selectio
-              <>
+              <div key={langLink}>
                 <Link
-                  key={langLink}
                   href="/"
                   locale={langLink}
                   className={`home__langague-links ${
@@ -30,13 +30,18 @@ const Home: NextPage = () => {
                   {langLink.toLocaleUpperCase()}
                 </Link>
                 {idx < langLinks.length - 1 && ' — '}
-              </>
+              </div>
             ))}
           </div>
         </nav>
         <section>{body}</section>
 
-        <footer>{footer}</footer>
+        <footer>
+          {footer}{' '}
+          <a href="https://derive.today/" target="_blank" rel="noreferrer">
+            {footerLinkText}
+          </a>
+        </footer>
       </main>
       <style jsx>
         {`
@@ -65,6 +70,15 @@ const Home: NextPage = () => {
 
           footer {
             font-size: 13px;
+            text-align: center;
+          }
+
+          .home__language-links-block {
+            display: flex;
+          }
+
+          a {
+            text-decoration: underline;
           }
         `}
       </style>
