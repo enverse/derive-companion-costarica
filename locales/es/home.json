@@ -1,5 +1,6 @@
 {
-  "body": "La Alianza Francesa de Costa Rica ha seleccionado para usted 100 lugares para visitar en San José. Con la ayuda de la app Dérive, déjese guiar por los restaurantes para comer fuera ➞ , los museos para maravillarse ➞ , los parques para tomar el aire ➞ , los lugares con historia para recordar ➞ y las discotecas para bailar ➞ .",
+  "intro": "La Alianza Francesa de Costa Rica ha seleccionado para usted 100 lugares para visitar en San José.",
+  "body": "Con la ayuda de la app Dérive, déjese guiar por los restaurantes para <0>comer fuera</0>, los museos para <1>maravillarse</1>, los parques para tomar <2>el aire</2>, los lugares con historia para <3>recordar</3> y las discotecas <4>para bailar</4>.",
   "footer": "Esta experiencia requiere de Dérive.",
   "footer-link-text": "Descargar la solicitud."
 

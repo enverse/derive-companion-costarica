@@ -1,5 +1,6 @@
 {
-  "body": "The Alliance Française du Costa Rica has selected for you 100 places to visit in San José. With the help of the Dérive app, let yourself be guided at random to restaurants to dine out ➞ , museums to marvel at ➞ , parks to oxygenate yourself ➞ , places of history to reminisce ➞ and clubs to sway ➞ .",
+  "intro": "The Alliance Française du Costa Rica has selected for you 100 places to visit in San José.",
+  "body": "With the help of the Dérive app, let yourself be guided at random to restaurants to <0>dine out</0>, museums to <1>marvel at</1>, parks to <2>oxygenate</2> yourself, places of history to <3>reminisce</3> and clubs to <4>dance</4>.",
   "footer": "This experience requires Dérive.",
   "footer-link-text": "Download the application."
 
