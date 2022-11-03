@@ -1,4 +1,5 @@
 import { GetStaticProps } from 'next';
+import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { useCallback } from 'react';
 import Navbar from '../components/Navbar';
@@ -14,6 +15,7 @@ type Props = {
 };
 
 export default function ResetPaths({ path }: Props) {
+  const { t } = useTranslation();
   const visitedDerives = useVisitedDerives({ as: 'array' });
   const { push } = useRouter();
 
@@ -26,29 +28,23 @@ export default function ResetPaths({ path }: Props) {
     }
   }, [visitedDerives, pathDerives, push]);
 
-  // if (!path) {
-  //   push('/404');
-  // }
-
-  // console.log(
-  //   visitedDerives,
-  //   path.locations.map((l) => l.derive.code),
-  //   pathDerives,
-  // );
+  const body = t('reset:body');
 
   return (
     <>
       <div>
         <Navbar />
-        Vous avez ouvert les vingt lieux de cette playlist, vous pouvez la
+        {body}
         <UniversalLinks onClick={handleReset} color={path?.color || 'blue'} path={path} reset />
       </div>
       <style jsx>
         {`
           div {
+            font-family: var(--BwNistaGeometricMed);
             display: flex;
             flex-direction: column;
             height: 100%;
+            padding: 45px;
           }
         `}
       </style>

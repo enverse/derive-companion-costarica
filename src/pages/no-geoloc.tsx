@@ -2,6 +2,7 @@ import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import useCurrentPosition from '../hooks/useCurrentPosition';
+import Layout from '../components/Layout';
 
 export default function NoGeoloc() {
   const { error, position } = useCurrentPosition();
@@ -28,6 +29,7 @@ export default function NoGeoloc() {
             align-items: center;
             justify-content: center;
             text-align: center;
+            padding: 45px;
             padding: 45px;
           }
         `}

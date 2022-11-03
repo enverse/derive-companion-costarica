@@ -33,7 +33,7 @@ export default function Navbar() {
             // flex-direction: row;
             justify-content: space-between;
             font-size: 15px;
-            padding-bottom: 25px;
+            padding-bottom: 45px;
           }
           .home__language-links-block {
             font-family: var(--BwNistaGeometricMed);

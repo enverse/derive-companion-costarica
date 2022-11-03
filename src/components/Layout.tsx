@@ -28,14 +28,13 @@ export default function Layout({ children }: Props) {
   // TODO CHANGE DIV TO MORE NORAML THING
   return (
     <>
-      <div className={`${bwNistaGeometric.variable} ${bwNistaGeometricMed.variable}`}>{children}</div>{' '}
+      <div className={`${bwNistaGeometric.variable} ${bwNistaGeometricMed.variable}`}>{children}</div>
       <style jsx>
         {`
           div {
             font-family: var(--BwNistaGeometricMed);
             font-size: 19px;
             height: 100%;
-            padding: 45px;
           }
         `}
       </style>

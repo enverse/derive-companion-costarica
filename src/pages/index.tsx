@@ -4,6 +4,7 @@ import Trans from 'next-translate/Trans';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
+import Layout from '../components/Layout';
 import UniversalLinks from '../components/UniversalLinks';
 import useCurrentPosition from '../hooks/useCurrentPosition';
 import useVisitedDerives from '../hooks/useVisitedDerives';
@@ -136,6 +137,7 @@ const Home: NextPage<Props> = () => {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            padding: 45px;
           }
 
           section {
@@ -155,14 +157,5 @@ const Home: NextPage<Props> = () => {
     </>
   );
 };
-
-// export const getServerSideProps: GetServerSideProps<Props> = async () => {
-//   const data = await fetch(`${DERIVE_ADMIN_API_URL}/experiences/${EXPERIENCE_CODE}`);
-//   return {
-//     props: {
-//       data: await data.json(),
-//     },
-//   };
-// };
 
 export default Home;
