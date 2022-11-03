@@ -1,25 +1,29 @@
 import Link from 'next/link';
+import { ReactNode, FC } from 'react';
+import { Path } from '../../../types/common';
 
 type Props = {
   path?: Path;
   /**
    * Comes from react-international
    */
-  children?: React.ReactNode;
+  children?: ReactNode;
 };
 
 const UNIVERSAL_LINKS_URL = 'https://app.derive.today';
 
-const UniversalLinks: React.FC<Props> = ({ path, children }) => {
+const UniversalLinks: FC<Props> = ({ path, children }) => {
   if (!path) {
     return (
       <span>
         {children}
-        <style jsx>{`
-          span {
-            color: white;
-          }
-        `}</style>
+        <style jsx>
+          {`
+            span {
+              color: white;
+            }
+          `}
+        </style>
       </span>
     );
   }

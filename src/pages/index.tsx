@@ -1,12 +1,15 @@
 import type { NextPage } from 'next';
 import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
-
-import Link from 'next/link';
-import UniversalLinks from '../components/UniversalLinks/index.tsx';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+
+import UniversalLinks from '../components/UniversalLinks';
 import useCurrentPosition from '../hooks/useCurrentPosition';
 import useVisitedDerives from '../hooks/useVisitedDerives';
+
+import type { Experience, Path } from '../types/common';
 
 const DERIVE_ADMIN_API_URL = process.env.NEXT_PUBLIC_DERIVE_ADMIN_API_URL;
 const EXPERIENCE_CODE = process.env.NEXT_PUBLIC_DERIVE_EXPERIENCE_TOKEN;
@@ -33,27 +36,34 @@ const Home: NextPage<Props> = () => {
 
   const visitedDerives = useVisitedDerives();
 
+  const { push } = useRouter();
+
   useEffect(() => {
     const getAndSetPaths = async () => {
       try {
         setLoading(true);
         const response = await fetch(
+          // eslint-disable-next-line comma-dangle
           `${DERIVE_ADMIN_API_URL}/experiences/${EXPERIENCE_CODE}/?lat=${lat}&lng=${lng}&toExclude=${visitedDerives}`
         );
-        const data = (await response.json()) as Experience;
-        const paths = getPaths(data.paths);
+        const jsonResponse = (await response.json()) as Experience;
+        const paths = getPaths(jsonResponse.paths);
         setData(paths);
         setLoading(false);
       } catch (e) {
         setLoading(false);
+
+        // eslint-disable-next-line no-console
         console.error(e);
+        await push('/500');
+        throw new TypeError('Ops, Something went wrong on our end');
       }
     };
 
     if (lat && lng) {
       getAndSetPaths();
     }
-  }, [lat, lng]);
+  }, [lat, lng, visitedDerives, push]);
 
   const intro = t('home:intro');
   const footer = t('home:footer');
@@ -91,16 +101,37 @@ const Home: NextPage<Props> = () => {
           <Trans
             i18nKey="home:body"
             components={[
-              <UniversalLinks loading={loading} path={data?.eat} color={data?.eat?.color || '#91c8b3'} />,
-              <UniversalLinks loading={loading} path={data?.wonder} color={data?.wonder?.color || '#c82a36'} />,
-              <UniversalLinks loading={loading} path={data?.breathe} color={data?.breathe?.color || '#e2cc58'} />,
-              <UniversalLinks loading={loading} path={data?.remember} color={data?.remember?.color || '#a78b77'} />,
-              <UniversalLinks loading={loading} path={data?.dance} color={data?.dance?.color || '#78b7d3'} />,
+              <UniversalLinks key="eat" path={data?.eat} color={data?.eat?.color || '#91c8b3'} />,
+              <UniversalLinks
+                key="wonder"
+                // loading={loading}
+                path={data?.wonder}
+                color={data?.wonder?.color || '#c82a36'}
+              />,
+              <UniversalLinks
+                key="breathe"
+                // loading={loading}
+                path={data?.breathe}
+                color={data?.breathe?.color || '#e2cc58'}
+              />,
+              <UniversalLinks
+                key="remember"
+                // loading={loading}
+                path={data?.remember}
+                color={data?.remember?.color || '#a78b77'}
+              />,
+              <UniversalLinks
+                key="dance"
+                // loading={loading}
+                path={data?.dance}
+                color={data?.dance?.color || '#78b7d3'}
+              />,
             ]}
           />
         </section>
 
         <footer>
+          {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
           {footer}{' '}
           <a href="https://derive.today/" target="_blank" rel="noreferrer">
             {footerLinkText}

@@ -1,14 +1,14 @@
 import { useRouter } from 'next/router';
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 
 export default () => {
   const { query } = useRouter();
 
-  const urlParams = new URLSearchParams(query as Record<string, string>);
+  const urlParams = useMemo(() => new URLSearchParams(query as Record<string, string>), [query]);
 
-  const get = useCallback((key: string) => urlParams.get(key), []);
-  const set = useCallback((key: string, value: string) => urlParams.set(key, value), []);
-  const deleteItem = useCallback((key: string, value: string) => urlParams.set(key, value), []);
+  const get = useCallback((key: string) => urlParams.get(key), [urlParams]);
+  const set = useCallback((key: string, value: string) => urlParams.set(key, value), [urlParams]);
+  const deleteItem = useCallback((key: string, value: string) => urlParams.set(key, value), [urlParams]);
 
   return { get, set, deleteItem };
 };

@@ -6,7 +6,7 @@ type Position = {
   lng: number | null;
 };
 
-export default function () {
+export default function useCurrentPosition() {
   const [postion, setPosition] = useState<Position>({ lat: null, lng: null });
 
   const { push } = useRouter();
@@ -17,7 +17,7 @@ export default function () {
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(handleSuccess, () => push('/no-geoloc'), { enableHighAccuracy: true });
-  }, []);
+  }, [push, handleSuccess]);
 
   return postion;
 }

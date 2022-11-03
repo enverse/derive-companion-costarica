@@ -1,4 +1,4 @@
-type Derive = {
+export type Derive = {
   id: string;
   code: string;
   message: string;
@@ -11,13 +11,13 @@ type Derive = {
   };
 };
 
-type DeriveLocation = {
+export type DeriveLocation = {
   id: string;
   title: string;
   derive: Derive;
 };
 
-type Path = {
+export type Path = {
   id: string;
   color: string;
   locations: Location[];
@@ -27,7 +27,7 @@ type Path = {
   slug: 'eat' | 'wonder' | 'breathe' | 'remember' | 'dance';
 };
 
-type Experience = {
+export type Experience = {
   company: {
     name: string;
   };

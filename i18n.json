@@ -4,6 +4,8 @@
   "pages": {
     "*": ["common"],
     "/": ["home"],
-    "/desktop": ["desktop"]
+    "/desktop": ["desktop"],
+    "/500": ["error-page"],
+    "/400": ["missing-page"]
   }
 }
