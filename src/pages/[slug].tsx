@@ -55,11 +55,11 @@ export default function ResetPaths({ path }: Props) {
 export async function getStaticPaths() {
   return {
     paths: [
-      { params: { slug: 'eat' } },
-      { params: { slug: 'wonder' } },
-      { params: { slug: 'breathe' } },
-      { params: { slug: 'remember' } },
-      { params: { slug: 'dance' } },
+      { params: { slug: '51' } },
+      { params: { slug: '52' } },
+      { params: { slug: '53' } },
+      { params: { slug: '54' } },
+      { params: { slug: '55' } },
     ],
     fallback: false, // can also be true or 'blocking'
   };
