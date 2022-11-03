@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import { useCallback, useEffect, useState } from 'react';
 
 type Position = {
@@ -7,17 +6,18 @@ type Position = {
 };
 
 export default function useCurrentPosition() {
-  const [postion, setPosition] = useState<Position>({ lat: null, lng: null });
+  const [position, setPosition] = useState<Position | null>(null);
+  const [error, setError] = useState<GeolocationPositionError | null>(null);
 
-  const { push } = useRouter();
-
-  const handleSuccess = useCallback<PositionCallback>((position) => {
-    setPosition({ lat: position.coords.latitude, lng: position.coords.longitude });
+  const handleSuccess = useCallback<PositionCallback>((newPosition) => {
+    setPosition({ lat: newPosition.coords.latitude, lng: newPosition.coords.longitude });
   }, []);
 
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(handleSuccess, () => push('/no-geoloc'), { enableHighAccuracy: true });
-  }, [push, handleSuccess]);
+  const errorCallback = useCallback((permissionError: GeolocationPositionError) => setError(permissionError), []);
 
-  return postion;
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(handleSuccess, errorCallback, { enableHighAccuracy: true });
+  }, [handleSuccess, errorCallback]);
+
+  return { position, error };
 }

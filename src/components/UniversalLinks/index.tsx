@@ -6,19 +6,37 @@ type Props = {
   children?: ReactNode;
   color: string;
   path?: Path;
+  reset?: boolean;
+  onClick?: () => void;
   // loading: boolean;
 };
 
-const UniversalLinksWrapper: FC<Props> = ({ color, children, path }) => (
+const UniversalLinksWrapper: FC<Props> = ({ color, children, path, reset, onClick }) => (
   <>
     <span>
-      <UniversalLinks path={path}>{children}</UniversalLinks>
+      {reset ? (
+        <button type="button" onClick={onClick}>
+          réinitaliser ➞
+        </button>
+      ) : (
+        <UniversalLinks path={path}>{children}</UniversalLinks>
+      )}
     </span>
     <style jsx>
       {`
         span {
           color: ${color};
-          text-decoration: underline;
+          border-bottom: 2px solid ${color};
+          width: fit-content;
+        }
+        button {
+          background: none;
+          color: inherit;
+          border: none;
+          padding: 0;
+          font: inherit;
+          cursor: pointer;
+          outline: inherit;
         }
       `}
     </style>

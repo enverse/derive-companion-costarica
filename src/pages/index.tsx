@@ -3,13 +3,13 @@ import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 
 import UniversalLinks from '../components/UniversalLinks';
 import useCurrentPosition from '../hooks/useCurrentPosition';
 import useVisitedDerives from '../hooks/useVisitedDerives';
 
 import type { Experience, Path } from '../types/common';
+import Navbar from '../components/Navbar';
 
 const DERIVE_ADMIN_API_URL = process.env.NEXT_PUBLIC_DERIVE_ADMIN_API_URL;
 const EXPERIENCE_CODE = process.env.NEXT_PUBLIC_DERIVE_EXPERIENCE_TOKEN;
@@ -31,12 +31,20 @@ function getPaths(paths: Path[]) {
 const Home: NextPage<Props> = () => {
   const [data, setData] = useState<FormattedPaths>();
   const [loading, setLoading] = useState(true);
-  const { t, lang: currentLocale } = useTranslation();
-  const { lat, lng } = useCurrentPosition();
+  const { t } = useTranslation();
+  const { position, error } = useCurrentPosition();
 
   const visitedDerives = useVisitedDerives();
 
   const { push } = useRouter();
+
+  if (error && !position) {
+    push('/no-geoloc');
+  }
+
+  const lng = position?.lng;
+  const lat = position?.lat;
+  const queryString = `?lat=${position?.lat}&lng=${position?.lng}&toExclude=${visitedDerives}`;
 
   useEffect(() => {
     const getAndSetPaths = async () => {
@@ -44,7 +52,7 @@ const Home: NextPage<Props> = () => {
         setLoading(true);
         const response = await fetch(
           // eslint-disable-next-line comma-dangle
-          `${DERIVE_ADMIN_API_URL}/experiences/${EXPERIENCE_CODE}/?lat=${lat}&lng=${lng}&toExclude=${visitedDerives}`
+          `${DERIVE_ADMIN_API_URL}/experiences/${EXPERIENCE_CODE}/${queryString}`,
         );
         const jsonResponse = (await response.json()) as Experience;
         const paths = getPaths(jsonResponse.paths);
@@ -55,45 +63,26 @@ const Home: NextPage<Props> = () => {
 
         // eslint-disable-next-line no-console
         console.error(e);
+        if (process.env.NODE_ENV === 'development') {
+          throw new TypeError('Ops, Something went wrong on our end');
+        }
         await push('/500');
-        throw new TypeError('Ops, Something went wrong on our end');
       }
     };
 
     if (lat && lng) {
       getAndSetPaths();
     }
-  }, [lat, lng, visitedDerives, push]);
+  }, [lat, lng, push, queryString]);
 
   const intro = t('home:intro');
   const footer = t('home:footer');
   const footerLinkText = t('home:footer-link-text');
 
-  const langLinks = ['en', 'fr', 'es'];
-
   return (
     <>
       <main>
-        <nav>
-          <div>Logos</div>
-          <div className="home__language-links-block">
-            {langLinks.map((langLink, idx) => (
-              // TODO fix this css selectio
-              <div key={langLink}>
-                <Link
-                  href="/"
-                  locale={langLink}
-                  className={`home__langague-links ${
-                    currentLocale === langLink ? 'home__language-links--disabled' : ''
-                  }`}
-                >
-                  {langLink.toLocaleUpperCase()}
-                </Link>
-                {idx < langLinks.length - 1 && ' — '}
-              </div>
-            ))}
-          </div>
-        </nav>
+        <Navbar />
         <section style={{ color: !loading ? '#323f57' : 'transparent' }}>
           {intro}
           <br />
@@ -140,11 +129,6 @@ const Home: NextPage<Props> = () => {
       </main>
       <style jsx>
         {`
-          nav {
-            display: flex;
-            // flex-direction: row;
-            justify-content: space-between;
-          }
           main {
             font-family: var(--BwNistaGeometricMed);
             color: #323f57;
@@ -152,15 +136,9 @@ const Home: NextPage<Props> = () => {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 45px;
-          }
-
-          nav {
-            font-size: 15px;
           }
 
           section {
-            font-size: 21px;
             line-height: 1.7;
           }
 
@@ -169,11 +147,7 @@ const Home: NextPage<Props> = () => {
             text-align: center;
           }
 
-          .home__language-links-block {
-            display: flex;
-          }
-
-          a {
+          footer a {
             text-decoration: underline;
           }
         `}

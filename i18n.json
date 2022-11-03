@@ -1,11 +1,12 @@
 {
-  "locales": ["en", "fr", "es"],
+  "locales": ["fr", "es"],
   "defaultLocale": "fr",
   "pages": {
     "*": ["common"],
     "/": ["home"],
     "/desktop": ["desktop"],
     "/500": ["error-page"],
-    "/400": ["missing-page"]
+    "/400": ["missing-page"],
+    "/no-geoloc": ["no-geoloc"]
   }
 }

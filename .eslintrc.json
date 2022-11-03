@@ -6,7 +6,8 @@
     "plugin:react/recommended"
   ],
   "globals": {
-    "PositionCallback": "readonly"
+    "PositionCallback": "readonly",
+    "GeolocationPositionError": "readonly"
   },
   "rules": {
     "import/prefer-default-export": "off",
@@ -15,6 +16,7 @@
     "react/require-default-props": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-one-expression-per-line": "off",
+    "object-curly-newline": "off",
     "max-len": [2, {"code": 120}],
     "react/no-unknown-property": [
       2,

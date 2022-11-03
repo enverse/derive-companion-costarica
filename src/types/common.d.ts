@@ -20,7 +20,7 @@ export type DeriveLocation = {
 export type Path = {
   id: string;
   color: string;
-  locations: Location[];
+  locations: DeriveLocation[];
   title: string;
   description: string | null;
   randomNextLocation?: DeriveLocation;
