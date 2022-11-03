@@ -4,7 +4,6 @@ import Trans from 'next-translate/Trans';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
-import Layout from '../components/Layout';
 import UniversalLinks from '../components/UniversalLinks';
 import useCurrentPosition from '../hooks/useCurrentPosition';
 import useVisitedDerives from '../hooks/useVisitedDerives';
