@@ -8,6 +8,7 @@
     "/500": ["error-page"],
     "/400": ["missing-page"],
     "/no-geoloc": ["no-geoloc"],
-    "/[slug]": ["reset"]
+    "/[slug]": ["reset"],
+    "/download-derive": ["download-derive"]
   }
 }

@@ -3,6 +3,7 @@ import useTranslation from 'next-translate/useTranslation';
 import Trans from 'next-translate/Trans';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 import UniversalLinks from '../components/UniversalLinks';
 import useCurrentPosition from '../hooks/useCurrentPosition';
@@ -82,49 +83,50 @@ const Home: NextPage<Props> = () => {
   return (
     <>
       <main>
-        <Navbar />
-        <section style={{ color: !loading ? '#323f57' : 'transparent' }}>
-          {intro}
-          <br />
-          <br />
-          <Trans
-            i18nKey="home:body"
-            components={[
-              <UniversalLinks key="eat" path={data?.eat} color={data?.eat?.color || '#91c8b3'} />,
-              <UniversalLinks
-                key="wonder"
-                // loading={loading}
-                path={data?.wonder}
-                color={data?.wonder?.color || '#c82a36'}
-              />,
-              <UniversalLinks
-                key="breathe"
-                // loading={loading}
-                path={data?.breathe}
-                color={data?.breathe?.color || '#e2cc58'}
-              />,
-              <UniversalLinks
-                key="remember"
-                // loading={loading}
-                path={data?.remember}
-                color={data?.remember?.color || '#a78b77'}
-              />,
-              <UniversalLinks
-                key="dance"
-                // loading={loading}
-                path={data?.dance}
-                color={data?.dance?.color || '#78b7d3'}
-              />,
-            ]}
-          />
-        </section>
-
+        <div className="home__main-block">
+          <Navbar />
+          <section style={{ color: !loading ? '#323f57' : 'transparent' }}>
+            {intro}
+            <br />
+            <br />
+            <Trans
+              i18nKey="home:body"
+              components={[
+                <UniversalLinks key="eat" path={data?.eat} color={data?.eat?.color || '#91c8b3'} />,
+                <UniversalLinks
+                  key="wonder"
+                  // loading={loading}
+                  path={data?.wonder}
+                  color={data?.wonder?.color || '#c82a36'}
+                />,
+                <UniversalLinks
+                  key="breathe"
+                  // loading={loading}
+                  path={data?.breathe}
+                  color={data?.breathe?.color || '#e2cc58'}
+                />,
+                <UniversalLinks
+                  key="remember"
+                  // loading={loading}
+                  path={data?.remember}
+                  color={data?.remember?.color || '#a78b77'}
+                />,
+                <UniversalLinks
+                  key="dance"
+                  // loading={loading}
+                  path={data?.dance}
+                  color={data?.dance?.color || '#78b7d3'}
+                />,
+              ]}
+            />
+          </section>
+        </div>
         <footer>
           {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
           {footer}{' '}
-          <a href="https://derive.today/" target="_blank" rel="noreferrer">
+          <Link style={{ textDecoration: 'underline' }} href="/download-derive">
             {footerLinkText}
-          </a>
+          </Link>
         </footer>
       </main>
       <style jsx>
@@ -135,8 +137,8 @@ const Home: NextPage<Props> = () => {
             height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             padding: 45px;
+            justify-content: space-between;
           }
 
           section {
@@ -144,6 +146,7 @@ const Home: NextPage<Props> = () => {
           }
 
           footer {
+            margin-top: 25px;
             font-size: 13px;
             text-align: center;
           }
