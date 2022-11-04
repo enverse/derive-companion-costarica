@@ -9,7 +9,7 @@ const Header: NextComponentType = () => {
 
   return (
     <Head>
-      <link rel="shortcut icon" href="/src/public/favicon.ico" />
+      <link rel="shortcut icon" href="/favicon.ico" />
       <title>{title}</title>
       <meta name="description" content={description} />
     </Head>

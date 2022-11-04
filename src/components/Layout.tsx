@@ -15,12 +15,12 @@ type Props = {
 // });
 
 const bwNistaGeometric = localFont({
-  src: '../public/fonts/BwNistaGeometric-Regular.otf',
+  src: '../../public/fonts/BwNistaGeometric-Regular.otf',
   variable: '--BwNistaGeometric',
 });
 
 const bwNistaGeometricMed = localFont({
-  src: '../public/fonts/BwNistaGeometric-Medium.otf',
+  src: '../../public/fonts/BwNistaGeometric-Medium.otf',
   variable: '--BwNistaGeometricMed',
 });
 

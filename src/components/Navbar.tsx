@@ -4,8 +4,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import AllianceLogo from '../public/img/Logo_AF_CR.png';
-import DeriveLogo from '../public/img/LogoAccentFondBlanc.svg';
+import AllianceLogo from '../../public/img/Logo_AF_CR.png';
+import DeriveLogo from '../../public/img/LogoAccentFondBlanc.svg';
 
 type Props = {
   logo?: ReactNode;

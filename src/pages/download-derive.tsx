@@ -4,9 +4,9 @@ import Image from 'next/image';
 
 import Navbar from '../components/Navbar';
 
-import GooglePlay from '../public/img/google-play.png';
-import AppStore from '../public/img/app-store.png';
-import DeriveLogoBlue from '../public/img/derive-logo-blue.webp';
+import GooglePlay from '../../public/img/google-play.png';
+import AppStore from '../../public/img/app-store.png';
+import DeriveLogoBlue from '../../public/img/derive-logo-blue.webp';
 
 export default function ResetPaths() {
   const { t } = useTranslation();

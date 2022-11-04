@@ -1,7 +1,7 @@
 import { NextPage } from 'next';
 import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
-import DeriveLogo from '../public/img/LogoAccentFondViolet.png';
+import DeriveLogo from '../../public/img/LogoAccentFondViolet.png';
 
 const Desktop: NextPage = () => {
   const { t } = useTranslation();
