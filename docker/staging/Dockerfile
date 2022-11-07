@@ -15,6 +15,8 @@ RUN pnpm install --frozen-lockfile
 FROM node:16-alpine AS builder
 
 ENV NEXT_TELEMETRY_DISABLED=1
+ENV NODE_ENV=production
+
 
 
 WORKDIR /app
@@ -39,7 +41,7 @@ ENV NODE_ENV=production
 RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
 
-COPY --from=builder /app/src/public ./public
+COPY --from=builder /app/public ./public
 
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
