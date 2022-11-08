@@ -4,8 +4,8 @@ import Image from 'next/image';
 
 import Navbar from '../components/Navbar';
 
-import GooglePlay from '../../public/img/google-play.png';
-import AppStore from '../../public/img/app-store.png';
+import GooglePlay from '../../public/img/play_store.svg';
+import AppStore from '../../public/img/apple_store.svg';
 import DeriveLogoBlue from '../../public/img/derive-logo-blue.webp';
 
 export default function ResetPaths() {

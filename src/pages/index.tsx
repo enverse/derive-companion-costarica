@@ -11,6 +11,7 @@ import useVisitedDerives from '../hooks/useVisitedDerives';
 
 import type { Experience, Path } from '../types/common';
 import Navbar from '../components/Navbar';
+import LinkToPartners from '../components/LinkToPartners';
 
 const DERIVE_ADMIN_API_URL = process.env.NEXT_PUBLIC_DERIVE_ADMIN_API_URL;
 const EXPERIENCE_CODE = process.env.NEXT_PUBLIC_DERIVE_EXPERIENCE_TOKEN;
@@ -76,7 +77,6 @@ const Home: NextPage<Props> = () => {
     }
   }, [lat, lng, push, queryString]);
 
-  const intro = t('home:intro');
   const footer = t('home:footer');
   const footerLinkText = t('home:footer-link-text');
 
@@ -86,7 +86,7 @@ const Home: NextPage<Props> = () => {
         <div className="home__main-block">
           <Navbar />
           <section style={{ color: !loading ? '#323f57' : 'transparent' }}>
-            {intro}
+            <Trans i18nKey="home:intro" components={[<LinkToPartners key="1" />]} />
             <br />
             <br />
             <Trans

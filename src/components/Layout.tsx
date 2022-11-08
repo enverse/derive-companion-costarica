@@ -33,7 +33,7 @@ export default function Layout({ children }: Props) {
         {`
           div {
             font-family: var(--BwNistaGeometricMed);
-            font-size: 19px;
+            font-size: 18px;
             height: 100%;
           }
         `}

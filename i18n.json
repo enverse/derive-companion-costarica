@@ -9,6 +9,7 @@
     "/400": ["missing-page"],
     "/no-geoloc": ["no-geoloc"],
     "/[slug]": ["reset"],
-    "/download-derive": ["download-derive"]
+    "/download-derive": ["download-derive"],
+    "/partners": ["partners"]
   }
 }
