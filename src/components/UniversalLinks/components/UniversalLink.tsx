@@ -33,7 +33,7 @@ const UniversalLinks: FC<Props> = ({ path, children }) => {
   const { randomNextLocation, id: pathId } = path;
 
   if (!randomNextLocation) {
-    return <Link href={path.id}>{children}➞</Link>;
+    return <Link href={{ pathname: `/${path.id}`, query }}>{children}➞</Link>;
   }
 
   return (
