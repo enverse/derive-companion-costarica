@@ -13,7 +13,7 @@ type Props = {
 
 export default function Navbar({ logo }: Props) {
   const { lang: currentLocale } = useTranslation();
-  const { pathname } = useRouter();
+  const { asPath } = useRouter();
 
   const langLinks = ['fr', 'es'];
 
@@ -35,7 +35,7 @@ export default function Navbar({ logo }: Props) {
             // TODO fix this css selectio
             <div key={langLink}>
               <Link
-                href={pathname}
+                href={asPath}
                 locale={langLink}
                 className={`home__langague-links ${currentLocale === langLink ? 'home__language-links--disabled' : ''}`}
               >

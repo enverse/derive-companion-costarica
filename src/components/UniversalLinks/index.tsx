@@ -16,7 +16,7 @@ const UniversalLinksWrapper: FC<Props> = ({ color, children, path, reset, onClic
     <span>
       {reset ? (
         <button type="button" onClick={onClick}>
-          réinitaliser ➞
+          {children} ➞
         </button>
       ) : (
         <UniversalLinks path={path}>{children}</UniversalLinks>

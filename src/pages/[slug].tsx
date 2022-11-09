@@ -1,5 +1,5 @@
-import { GetStaticProps } from 'next';
-import useTranslation from 'next-translate/useTranslation';
+import { GetStaticPaths, GetStaticProps, GetStaticPathsResult } from 'next';
+import Trans from 'next-translate/Trans';
 import { useRouter } from 'next/router';
 import { useCallback } from 'react';
 import Navbar from '../components/Navbar';
@@ -15,7 +15,6 @@ type Props = {
 };
 
 export default function ResetPaths({ path }: Props) {
-  const { t } = useTranslation();
   const visitedDerives = useVisitedDerives({ as: 'array', pathId: path?.id || '' });
   const { push } = useRouter();
 
@@ -29,14 +28,16 @@ export default function ResetPaths({ path }: Props) {
     }
   }, [visitedDerives, pathDerives, push, path?.id]);
 
-  const body = t('reset:body');
-
   return (
     <>
       <div>
         <Navbar />
-        {body}
-        <UniversalLinks onClick={handleReset} color={path?.color || 'blue'} path={path} reset />
+        <Trans
+          i18nKey="reset:body"
+          components={[
+            <UniversalLinks key={0} onClick={handleReset} color={path?.color || 'blue'} path={path} reset />,
+          ]}
+        />
       </div>
       <style jsx>
         {`
@@ -53,18 +54,21 @@ export default function ResetPaths({ path }: Props) {
   );
 }
 
-export async function getStaticPaths() {
-  return {
-    paths: [
-      { params: { slug: '51' } },
-      { params: { slug: '52' } },
-      { params: { slug: '53' } },
-      { params: { slug: '54' } },
-      { params: { slug: '55' } },
-    ],
-    fallback: false, // can also be true or 'blocking'
+export const getStaticPaths: GetStaticPaths = async (ctx) => {
+  const staticPathsResult: GetStaticPathsResult = {
+    paths: [],
+    fallback: false,
   };
-}
+  const slugs = ['51', '52', '53', '54', '55'];
+
+  slugs.forEach((slug) => {
+    ctx.locales?.forEach((locale) => {
+      staticPathsResult.paths.push({ params: { slug }, locale });
+    });
+  });
+
+  return staticPathsResult;
+};
 
 // `getStaticPaths` requires using `getStaticProps`
 export const getStaticProps: GetStaticProps<{ path: Path }> = async (context) => {
