@@ -16,7 +16,7 @@ type Props = {
 
 export default function ResetPaths({ path }: Props) {
   const { t } = useTranslation();
-  const visitedDerives = useVisitedDerives({ as: 'array' });
+  const visitedDerives = useVisitedDerives({ as: 'array', pathId: path?.id || '' });
   const { push } = useRouter();
 
   const pathDerives = path?.locations.map(({ derive }) => derive.code);

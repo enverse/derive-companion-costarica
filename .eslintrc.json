@@ -23,6 +23,7 @@
     "operator-linebreak": "off",
     "no-unused-vars": "off",
     "@typescript-eslint/ban-types": "off",
+    "indent": "off",
     "max-len": [2, {"code": 120}],
     "react/no-unknown-property": [
       2,

@@ -40,7 +40,7 @@ const UniversalLinks: FC<Props> = ({ path, children }) => {
     <a
       href={`${UNIVERSAL_LINKS_URL}/?code=${
         randomNextLocation.derive.code
-      }&pcode=${pathId}&backLink=${encodeURIComponent(`${window.location.href}/?visited=${query.visited}`)}`}
+      }&pcode=${pathId}&backLink=${encodeURIComponent(`${window.location.href}`)}`}
     >
       {children}➞
     </a>
