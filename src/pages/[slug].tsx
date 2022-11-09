@@ -1,9 +1,9 @@
 import { GetStaticPaths, GetStaticProps, GetStaticPathsResult } from 'next';
 import Trans from 'next-translate/Trans';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useCallback } from 'react';
+import { useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
-import UniversalLinks from '../components/UniversalLinks';
 import useUrlParams from '../hooks/useUrlParams';
 // import useUrlParams from '../hooks/useUrlParams';
 import { Path } from '../types/common';
@@ -14,19 +14,26 @@ type Props = {
   path?: Path;
 };
 
+const ResetLink = ({ children, urlParams, color }: any) => (
+  <Link style={{ color, borderBottom: '2px solid', width: 'fit-content' }} key={0} href={`/?${urlParams}`}>
+    {children}➞
+  </Link>
+);
+
 export default function ResetPaths({ path }: Props) {
   const { deleteItem, set, getAllAsString } = useUrlParams();
   const { push } = useRouter();
+  const [urlParams, setUrlParams] = useState('');
 
-  const handleReset = useCallback(() => {
+  useEffect(() => {
     // if (Array.isArray(visitedDerives)) {
     // const newParams = visitedDerives.filter((deriveCode) => !pathDerives?.includes(deriveCode));
     /** Need t also reset path in app */
     if (path) {
       deleteItem(path.id);
       set('resetPath', path?.id);
+      setUrlParams(getAllAsString());
     }
-    push({ pathname: '/', query: getAllAsString() });
     // }
   }, [deleteItem, push, set, path, getAllAsString]);
 
@@ -34,12 +41,7 @@ export default function ResetPaths({ path }: Props) {
     <>
       <div>
         <Navbar />
-        <Trans
-          i18nKey="reset:body"
-          components={[
-            <UniversalLinks key={0} onClick={handleReset} color={path?.color || 'blue'} path={path} reset />,
-          ]}
-        />
+        <Trans i18nKey="reset:body" components={[<ResetLink key={0} color={path?.color} urlParams={urlParams} />]} />
       </div>
       <style jsx>
         {`
