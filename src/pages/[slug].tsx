@@ -4,8 +4,8 @@ import { useRouter } from 'next/router';
 import { useCallback } from 'react';
 import Navbar from '../components/Navbar';
 import UniversalLinks from '../components/UniversalLinks';
+import useUrlParams from '../hooks/useUrlParams';
 // import useUrlParams from '../hooks/useUrlParams';
-import useVisitedDerives from '../hooks/useVisitedDerives';
 import { Path } from '../types/common';
 
 const DERIVE_ADMIN_API_URL = process.env.NEXT_PUBLIC_DERIVE_ADMIN_API_URL;
@@ -15,18 +15,20 @@ type Props = {
 };
 
 export default function ResetPaths({ path }: Props) {
-  const visitedDerives = useVisitedDerives({ as: 'array', pathId: path?.id || '' });
+  const { deleteItem, set, getAllAsString } = useUrlParams();
   const { push } = useRouter();
 
-  const pathDerives = path?.locations.map(({ derive }) => derive.code);
-
   const handleReset = useCallback(() => {
-    if (Array.isArray(visitedDerives)) {
-      const newParams = visitedDerives.filter((deriveCode) => !pathDerives?.includes(deriveCode));
-      /** Need t also reset path in app */
-      push({ pathname: '/', query: { visited: newParams.join(','), resetPath: path?.id } });
+    // if (Array.isArray(visitedDerives)) {
+    // const newParams = visitedDerives.filter((deriveCode) => !pathDerives?.includes(deriveCode));
+    /** Need t also reset path in app */
+    if (path) {
+      deleteItem(path.id);
+      set('resetPath', path?.id);
     }
-  }, [visitedDerives, pathDerives, push, path?.id]);
+    push({ pathname: '/', query: getAllAsString() });
+    // }
+  }, [deleteItem, push, set, path, getAllAsString]);
 
   return (
     <>
