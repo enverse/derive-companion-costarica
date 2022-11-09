@@ -24,9 +24,10 @@ export default function ResetPaths({ path }: Props) {
   const handleReset = useCallback(() => {
     if (Array.isArray(visitedDerives)) {
       const newParams = visitedDerives.filter((deriveCode) => !pathDerives?.includes(deriveCode));
-      push({ pathname: '/', query: { visited: newParams.join(',') } });
+      /** Need t also reset path in app */
+      push({ pathname: '/', query: { visited: newParams.join(','), resetPath: path?.id } });
     }
-  }, [visitedDerives, pathDerives, push]);
+  }, [visitedDerives, pathDerives, push, path?.id]);
 
   const body = t('reset:body');
 

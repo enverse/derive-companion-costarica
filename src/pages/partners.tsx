@@ -15,7 +15,7 @@ const partners = [
   'Cristina Quirós',
 ];
 
-export default function ResetPaths() {
+export default function Partners() {
   const { t } = useTranslation();
 
   const body = t('partners:body');
