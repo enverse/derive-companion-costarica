@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { ReactNode, FC } from 'react';
 import { Path } from '../../../types/common';
 
@@ -13,6 +14,7 @@ type Props = {
 const UNIVERSAL_LINKS_URL = 'https://app.derive.today';
 
 const UniversalLinks: FC<Props> = ({ path, children }) => {
+  const { query } = useRouter();
   if (!path) {
     return (
       <span>
@@ -38,7 +40,7 @@ const UniversalLinks: FC<Props> = ({ path, children }) => {
     <a
       href={`${UNIVERSAL_LINKS_URL}/?code=${
         randomNextLocation.derive.code
-      }&pcode=${pathId}&backLink=${encodeURIComponent(window.location.href)}`}
+      }&pcode=${pathId}&backLink=${encodeURIComponent(`${window.location.href}/?visited=${query.visited}`)}`}
     >
       {children}➞
     </a>
