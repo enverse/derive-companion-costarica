@@ -1,4 +1,6 @@
 {
-  "body": "L’Alliance Française du Costa Rica a sélectionné pour vous 100 lieux à visiter à San José. A l’aide de l’application Dérive, laissez-vous guider au hasard vers des restaurants pour passer à table ➞ , des musées pour vous émerveiller ➞ , des parcs pour vous oxygéner ➞, des lieux d’histoire pour vous remémorer ➞ et des clubs pour vous déhancher ➞ .",
-  "footer": "Cette expérience nécessite Dérive. Télécharger l'application"
+  "intro": "L'Alliance Française du Costa Rica a sélectionné, <0>avec ses partenaires</0>, 100 lieux pour découvrir San José avec un regard différent.",
+  "body": "À l’aide de l’application Dérive, laisse-toi guider au hasard vers des œuvres d'art et des lieux à <0>admirer</0>, des espaces zéro déchets ou naturels pour te <1>connecter</1>, es cafés, restaurants et autres merveilles à <2>déguster</2>, des oasis pour <3>t'arrêter</3> et de nombreux trésors pour te <4>surprendre</4>.",
+  "footer": "Cette expérience nécessite Dérive.",
+  "footer-link-text": "Télécharger l'application."
 }

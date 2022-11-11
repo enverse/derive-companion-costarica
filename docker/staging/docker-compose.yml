@@ -3,17 +3,17 @@ services:
   derive-companion-costarica-staging:
     build:
       context: ../../
-      dockerfile: docker/developement/Dockerfile
+      dockerfile: docker/staging/Dockerfile
     image: registry.gitlab.com/heretictech/derive-companion-costarica:staging
     # volumes:
     #   - ./:/app
     #   - /app/node_modules
     environment:
-      VIRTUAL_HOST: sanjose-staging.derive.fm
-      VIRTUAL_PORT: 4009
-      LETSENCRYPT_HOST: sanjose-staging.derive.fm
-      PORT: 4009
+      VIRTUAL_HOST: sanjose-staging.derive.fm, chepe-staging.derive.fm
+      VIRTUAL_PORT: 4010
+      LETSENCRYPT_HOST: sanjose-staging.derive.fm, chepe-staging.derive.fm
+      PORT: 4010
     ports:
-      - "4009:4009"
+      - "4010:4010"
     container_name: derive-companion-costarica-staging
     network_mode: bridge

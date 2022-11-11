@@ -15,16 +15,29 @@ type Props = {
 // });
 
 const bwNistaGeometric = localFont({
-  src: '../public/fonts/BwNistaGeometric-Regular.otf',
+  src: '../../public/fonts/BwNistaGeometric-Regular.otf',
   variable: '--BwNistaGeometric',
 });
 
 const bwNistaGeometricMed = localFont({
-  src: '../public/fonts/BwNistaGeometric-Medium.otf',
+  src: '../../public/fonts/BwNistaGeometric-Medium.otf',
   variable: '--BwNistaGeometricMed',
 });
 
 export default function Layout({ children }: Props) {
   // TODO CHANGE DIV TO MORE NORAML THING
-  return <div className={`${bwNistaGeometric.variable} ${bwNistaGeometricMed.variable}`}>{children}</div>;
+  return (
+    <>
+      <div className={`${bwNistaGeometric.variable} ${bwNistaGeometricMed.variable}`}>{children}</div>
+      <style jsx>
+        {`
+          div {
+            font-family: var(--BwNistaGeometricMed);
+            font-size: 18px;
+            height: 100%;
+          }
+        `}
+      </style>
+    </>
+  );
 }
