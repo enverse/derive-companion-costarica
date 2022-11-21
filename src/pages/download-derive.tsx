@@ -9,7 +9,7 @@ import AppStore from '../../public/img/apple_store.svg';
 import DeriveLogoBlue from '../../public/img/derive-logo-blue.webp';
 
 export default function DownloadDerive() {
-  const { t } = useTranslation();
+  const { t, lang } = useTranslation();
 
   const intro = t('download-derive:intro');
   return (
@@ -22,7 +22,11 @@ export default function DownloadDerive() {
             <div className="download-derive__text">
               <Trans i18nKey="download-derive:body" components={[<b key={0} />]} />
             </div>
-            <a href="https://www.file.io/CLoX/download/V3rIxzosK424" target="_blank" rel="noreferrer">
+            <a
+              href={`https://play.google.com/store/apps/details?id=com.heretic.derive&hl=${lang}`}
+              target="_blank"
+              rel="noreferrer"
+            >
               <Image style={{ marginTop: 35 }} width={201} alt="google-play" src={GooglePlay} />
             </a>
             <a href="https://apps.apple.com/app/derive/id1464873017" target="_blank" rel="noreferrer">
